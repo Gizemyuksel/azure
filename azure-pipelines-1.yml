@@ -4,7 +4,17 @@ pool: Default
 
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: './backend'
+    arguments: 'configuration Release'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    projects: './backend'
+    arguments: '--configuration Release --output /Users/gizemyuksel/Desktop/patika'
 
 - task: Bash@3
   inputs:
