@@ -4,9 +4,10 @@ pool: Default
 
 
 steps:
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 
+    script: |
       dotnet build $(Build.SourcesDirectory)/backend/backend.csproj -c Release -o /Users/gizemyuksel/Desktop/patika
       dotnet publish $(Build.SourcesDirectory)/backend/backend.csproj -c Release -o /Users/gizemyuksel/Desktop/patika /p:UseAppHost=false
