@@ -4,15 +4,9 @@ pool: Default
 
 
 steps:
-- task: DotNetCoreCLI@2
+- task: Bash@3
   inputs:
-    command: 'build'
-    projects: './backend'
-    arguments: 'configuration Release'
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    projects: './backend'
-    arguments: '--configuration Release --output /Users/gizemyuksel/Desktop/patika'
-
+    targetType: 'inline'
+    script: 
+      dotnet build $(Build.SourcesDirectory)/backend/backend.csproj -c Release -o /Users/gizemyuksel/Desktop/patika
+      dotnet publish $(Build.SourcesDirectory)/backend/backend.csproj -c Release -o /Users/gizemyuksel/Desktop/patika /p:UseAppHost=false
